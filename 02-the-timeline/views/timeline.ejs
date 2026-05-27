@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Timeline</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        .header {
+            border-bottom: 2px solid #000000;
+            padding: 15px 20px;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px 20px;
+        }
+        .post-card {
+            margin-bottom: 30px;
+        }
+        .post-meta {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .post-message {
+            font-size: 1rem;
+            line-height: 1.4;
+            padding-left: 15px;
+            margin: 0;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Timeline
+    </div>
+
+    <div class="container">
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <div class="post-card">
+                    <div class="post-meta">
+                        <%= post.name %> - <%= post.createdAt %>
+                    </div>
+                    <p class="post-message">
+                        <%= post.message %>
+                    </p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No posts available on your timeline yet.</p>
+        <% } %>
+    </div>
+
+</body>
+</html>
