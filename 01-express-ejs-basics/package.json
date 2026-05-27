@@ -1,0 +1,14 @@
+{
+  "name": "node-backend-playground",
+  "version": "1.0.0",
+  "description": "A playground repository for exploring Node.js backend development foundations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^4.19.2"
+  }
+}
