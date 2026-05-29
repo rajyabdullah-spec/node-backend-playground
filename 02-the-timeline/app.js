@@ -6,24 +6,29 @@ app.set('view engine', 'ejs');
 
 const timelineData = [
     { 
-        name: "Michael Choi",
-        createdAt: "15-01-2013",
-        message: "This is my message. This is my message. This is my message. This is my message. This is my message."
+        name: "Raji Al-Abdullah",
+        createdAt: "29-05-2026",
+        message: "Proud to finally deploy the first version of my backend playground! Building this timeline and managing data flows has been an incredible learning experience."
     },
     { 
-        name: "Michael Choi",
-        createdAt: "23-01-2013",
-        message: "This is my message. This is my message. This is my message. This is my message. This is my message."
+        name: "Wesam Shujaa",
+        createdAt: "28-05-2026",
+        message: "Welcome back everyone! I am looking forward to seeing your clean MVC implementations and database connections for this second milestone."
     },
     { 
-        name: "Cory Whiteland",
-        createdAt: "15-01-2013",
-        message: "This is my message. This is my message. This is my message. This is my message. This is my message."
+        name: "Omid Yazdabadi",
+        createdAt: "27-05-2026",
+        message: "Just finished refactoring my route handlers into controllers. The separation of concerns makes the timeline code so much cleaner now."
     },
     { 
-        name: "Cory Whiteland",
-        createdAt: "01-01-2013",
-        message: "This is my message. This is my message. This is my message. This is my message. This is my message."
+        name: "Saragrotti",
+        createdAt: "26-05-2026",
+        message: "Testing the cloud connection with MongoDB Atlas. It is amazing how our dynamic sorting algorithm keeps everything in strict chronological order."
+    },
+    { 
+        name: "Nina Fa",
+        createdAt: "25-05-2026",
+        message: "The dark theme layout with EJS partials looks completely seamless. Loving how the details and edit views perfectly match the main feed style."
     }
 ];
 

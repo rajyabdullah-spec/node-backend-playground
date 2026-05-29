@@ -38,30 +38,29 @@ To explore or run any specific module on your machine, follow these steps:
 
 1. **Clone the Repository:**
 ```bash
-   git clone https://github.com/rajyabdullah-spec/node-backend-playground.git
-
-   cd node-backend-playground
+git clone https://github.com/rajyabdullah-spec/node-backend-playground.git
+cd node-backend-playground
 ```
 
 2. **Navigate and Run Module 1 (Basics):**
 ```bash
-    cd 01-express-ejs-basics
-    npm install
-    node app.js
+cd 01-express-ejs-basics
+npm install
+node app.js
 ```
 
 3. **Navigate and Run Module 2 (The Timeline Assignment 1):**
 ```bash
-    cd ../02-the-timeline
-    npm install
-    node app.js
+cd ../02-the-timeline
+npm install
+nodemon app.js
 ```
 
 4. **Navigate and Run Module 3 (The Timeline V2 with DB):**
 ```bash
-    cd ../03-the-timeline-v2
-    npm install
-    npm start
+cd ../03-the-timeline-v2
+npm install
+nodemon app.js
 ```
 
 *💡 After running any module, you can access the local server at:*
