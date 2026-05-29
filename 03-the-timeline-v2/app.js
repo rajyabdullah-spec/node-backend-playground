@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose'); 
 
 const app = express();
+app.use(express.static('public'));
 
 const timelineRoutes = require('./routes/timelineRoutes');
 
