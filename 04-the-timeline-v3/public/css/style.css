@@ -1,0 +1,319 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    --danger-color: #f85149;
+    --success-color: #2a9d8f;
+    --warning-color: #e9c46a;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+
+.header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 40px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+.container {
+    max-width: 680px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+.details-container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-top: 40px;
+}
+
+.details-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+
+.feed-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--text-secondary);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+.post-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.post-title-accent {
+    font-size: 1.1rem; 
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 8px;
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background-color: rgba(88, 166, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.post-message {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.post-link-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.post-link-container a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+
+.main-textarea {
+    width: 100%;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    padding: 10px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.main-textarea:focus, .comment-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.details-textarea {
+    height: 120px;
+}
+
+.comment-input {
+    width: 75%;
+    padding: 8px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    float: right;
+    margin-top: 5px;
+}
+
+.btn-comment {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+}
+
+.btn-save {
+    background-color: var(--success-color);
+    color: white;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+}
+
+.btn-cancel {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+}
+
+.btn-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.btn-edit-page {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.btn-delete-page {
+    background-color: var(--danger-color);
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.btn-back {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--accent-color);
+}
+
+
+.error-box {
+    background-color: rgba(248, 81, 73, 0.1);
+    border: 1px solid var(--danger-color);
+    color: #ff7b72;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.comment-error-box {
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+}
+
+
+.comments-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.comments-title {
+    margin: 0 0 10px 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.comment-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.comment-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.comment-text-italic {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.comment-actions {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-actions small {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+.action-edit { color: var(--warning-color); }
+.action-delete { color: var(--danger-color); }
+
+.comment-form-container {
+    margin-top: 15px;
+}
+
+
+.clear-fix {
+    clear: both;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+}

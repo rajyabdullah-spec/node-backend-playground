@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Timeline | Matrix Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="header">
+        The Timeline
+    </div>
+
+    <div class="container">
+        <div class="post-card">
+            <h3 class="post-title-accent">Post a message</h3>
+            
+            <% if (locals.error) { %>
+                <div class="error-box">
+                    ⚠️ <%= error %>
+                </div>
+            <% } %>
+
+            <form action="/add-post" method="POST">
+                <textarea name="post" rows="4" class="main-textarea" placeholder="What's on your mind? (Minimum 25 characters)"></textarea>
+                <button type="submit" class="btn btn-primary">Post a message</button>
+                <div class="clear-fix"></div>
+            </form>
+        </div>
+
+        <div class="feed-title">Latest Updates</div>
+
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(p => { %>
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-date">📅 <%= p.createdAt.toLocaleString() %></span>
+                    </div>
+                    <p class="post-message"><%= p.post %></p>
+                    
+                    <div class="post-link-container">
+                        <a href="/post/<%= p._id %>">See More </a>
+                    </div>
+
+                    <div class="comments-section">
+                        <h4 class="comments-title">Comments:</h4>
+                        
+                        <% if (p.comments && p.comments.length > 0) { %>
+                            <% p.comments.forEach(c => { %>
+                                <div class="comment-card">
+                                    
+                                    <div id="comment-view-<%= c._id %>">
+                                        <p class="comment-text"><%= c.comment %></p>
+                                        <div class="comment-actions">
+                                            <small>💬 <%= c.createdAt.toLocaleString() %></small>
+                                            <button onclick="toggleEditComment('<%= c._id %>')" class="action-link action-edit">✏️ Edit</button>
+                                            <button onclick="deleteComment('<%= c._id %>')" class="action-link action-delete">🗑️ Delete</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="comment-edit-<%= c._id %>" class="clear-fix" style="display: none;">
+                                        <form action="/comment/<%= c._id %>/edit" method="POST">
+                                            <input type="text" name="comment" value="<%= c.comment %>" class="comment-input" required>
+                                            <button type="submit" class="btn btn-save">Save</button>
+                                            <button type="button" onclick="toggleEditComment('<%= c._id %>')" class="btn btn-cancel">Cancel</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            <% }) %>
+                        <% } else { %>
+                            <p class="comment-text comment-text-italic">No comments yet.</p>
+                        <% } %>
+
+                        <form action="/post/<%= p._id %>/comment" method="POST" class="comment-form-container">
+                            <% if (locals.commentError && locals.errorPostId && errorPostId === p._id.toString()) { %>
+                                <div class="error-box comment-error-box">
+                                    ⚠️ <%= commentError %>
+                                </div>
+                            <% } %>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment... (Min 10 chars)" required>
+                            <button type="submit" class="btn btn-comment">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="empty-state">
+                <p>No messages posted on the timeline yet.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        function toggleEditComment(id) {
+            const viewDiv = document.getElementById(`comment-view-${id}`);
+            const editDiv = document.getElementById(`comment-edit-${id}`);
+            if (viewDiv.style.display === 'none') {
+                viewDiv.style.display = 'block';
+                editDiv.style.display = 'none';
+            } else {
+                viewDiv.style.display = 'none';
+                editDiv.style.display = 'block';
+            }
+        }
+
+        async function deleteComment(id) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                const response = await fetch(`/comment/${id}`, { method: 'DELETE' });
+                const data = await response.json();
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details | Matrix Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container details-container">
+    <h2>Edit Post</h2>
+
+    <% if (locals.error) { %>
+        <div class="error-box">⚠️ <%= error %></div>
+    <% } %>
+
+    <form action="/post/<%= post._id %>/edit" method="POST">
+        <label class="details-label" for="message">Update your post content:</label>
+        <textarea name="message" id="message" class="main-textarea details-textarea"><%= post.post %></textarea>
+        
+        <div class="btn-group">
+            <button type="submit" class="btn btn-edit-page">Save Changes</button>
+            <button type="button" class="btn btn-delete-page" onclick="deletePost('<%= post._id %>')">Delete Post</button>
+        </div>
+    </form>
+
+    <a href="/" class="btn btn-back">← Back to Timeline</a>
+</div>
+
+<script>
+    async function deletePost(id) {
+        if (confirm('Are you sure you want to permanently delete this post?')) {
+            const response = await fetch(`/post/${id}`, { method: 'DELETE' });
+            const data = await response.json();
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        }
+    }
+</script>
+</body>
+</html>
