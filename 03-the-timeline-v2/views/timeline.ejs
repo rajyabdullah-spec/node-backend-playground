@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Timeline | Matrix Connect</title>
-
 </head>
     <link rel="stylesheet" href="/css/style.css">
 <body>
@@ -15,18 +14,18 @@
 
     <div class="container">
         <div class="post-card">
-            <h3 style="margin-top: 0; color: var(--accent-color);">Post a message</h3>
+            <h3 class="form-title">Post a message</h3>
             
             <% if (error) { %>
-                <div style="background-color: rgba(255, 0, 0, 0.1); border: 1px solid red; color: #ff6b6b; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+                <div class="error-box">
                     ⚠️ <%= error %>
                 </div>
             <% } %>
 
             <form action="/add-post" method="POST">
-                <textarea name="post" rows="4" style="width: 100%; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 10px; resize: vertical; box-sizing: border-box;" placeholder="What's on your mind? (Minimum 25 characters)"></textarea>
-                <button type="submit" style="background-color: var(--accent-color); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 10px; float: right;">Post a message</button>
-                <div style="clear: both;"></div>
+                <textarea name="post" rows="4" class="form-textarea" placeholder="What's on your mind? (Minimum 25 characters)"></textarea>
+                <button type="submit" class="btn-submit">Post a message</button>
+                <div class="clearfix"></div>
             </form>
         </div>
 
@@ -40,8 +39,8 @@
                     </div>
                     <p class="post-message"><%= p.post %></p>
                     
-                    <div style="text-align: right; margin-top: 10px;">
-                        <a href="/post/<%= p._id %>" style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem;">See More →</a>
+                    <div class="details-link-container">
+                        <a href="/post/<%= p._id %>" class="see-more-link">See More →</a>
                     </div>
                 </div>
             <% }) %>
