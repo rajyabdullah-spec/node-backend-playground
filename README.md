@@ -73,31 +73,32 @@ This upgraded version implements strict REST specifications and professional bac
 
 ---
 
-## 🚀 How to Run the Projects Locally
+## 🌐 Live Cloud Demonstration
+Before running the code locally, you can instantly test and view the raw data responses of the final production-ready stage:
+* 🌍 **Live REST API Endpoint:** `https://timeline-api-v4.onrender.com`
 
-To explore or run any specific module on your machine, always start from the root repository directory:
+---
+
+## 💻 Local Execution & Verification
+If you want to inspect or execute any specific evolution stage locally, navigate to the repository root directory and run the standalone command for your desired module:
 
 ```bash
-# Clone the Repository and enter the root workspace
-git clone https://github.com/rajyabdullah-spec/node-backend-playground.git
-cd node-backend-playground
-
 # Option 1: Run Module 1 (Basics)
-cd 01-express-ejs-basics && npm install && node app.js
+cd 01-express-ejs-basics && npm install && npm run dev
 
 # Option 2: Run Module 2 (The Timeline Assignment 1)
-cd ../02-the-timeline && npm install && nodemon app.js
+cd 02-the-timeline && npm install && npm run dev
 
 # Option 3: Run Module 3 (The Timeline v2 with DB)
-cd ../03-the-timeline-v2 && npm install && nodemon app.js
+cd 03-the-timeline-v2 && npm install && npm run dev
 
 # Option 4: Run Module 4 (The Timeline v3 Comments & Isolation)
-cd ../04-the-timeline-v3 && npm install && nodemon app.js
+cd 04-the-timeline-v3 && npm install && npm run dev
 
 # Option 5: Run Module 5 (The Timeline API v4 - Current REST API Assignment)
-cd ../05-the-timeline-v4 && npm install && nodemon app.js
+cd 05-the-timeline-v4 && npm install && npm run dev
 
-*💡 After running any module, you can access the local server at:*
- http://localhost:3000
+💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
+👉 http://localhost:3000
 
  *Engineered by Raji Al-Abdullah - 2026*
