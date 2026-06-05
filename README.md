@@ -8,7 +8,9 @@ The project is highly organized into isolated, scalable modules to prevent code 
 
 * **`01-express-ejs-basics/`** Contains early architectural concepts, chainable route handlers, custom middlewares (including Morgan logger), static file serving, and the implementation of EJS template layout partials.
 * **`02-the-timeline/`** *Assignment 1 Setup.* A full-stack mockup of a social network feed that utilizes a dynamic sorting algorithm to display user messages in a strict chronological order (most recent on top).
-* **`03-the-timeline-v2/`** *Assignment 2 Setup.* An advanced evolution of the timeline project implementing a full **Model-View-Controller (MVC)** architecture integrated with a cloud database (**MongoDB Atlas**). 
+* **`03-the-timeline-v2/`** *Assignment 2 Setup.* An evolution of the timeline project implementing a full **Model-View-Controller (MVC)** architecture integrated with a cloud database (**MongoDB Atlas**). 
+* **`04-the-timeline-v3/`** *Assignment 3 Setup.* An advanced iteration focusing on multi-model relationships, introducing the comments feature under individual posts alongside robust validation and dynamic rendering.
+* **`05-the-timeline-v4/`** *Assignment 4 Setup.* A complete transition into a modern headless **RESTful API Engine**. This architecture decouples the frontend entirely, exposing data endpoints designed for Postman validation and future React integration.
 
 ---
 
@@ -22,46 +24,80 @@ This upgraded version introduces robust backend functionalities and full CRUD op
 
 ---
 
+## 🚀 Key Features in Version 3 (04-the-timeline-v3)
+
+This version expands the core relational capabilities of the MVC timeline application:
+* **Relational Data Modeling:** Implemented a secondary `Comment` schema with full ObjectId references mapping directly back to parent posts.
+* **Granular Backend Validation:** Enforced distinct structural requirements for inputs, requiring a 25-character minimum for posts and a 10-character minimum for user comments.
+* **Cascading Depletions:** Structured controller workflows to ensure that removing a specific post programmatically deletes all nested comments attached to it.
+
+---
+
+## 🚀 Key Features in Version 4 (05-the-timeline-v4)
+
+This upgraded version implements strict REST specifications and professional backend guidelines:
+* **Headless API Architecture:** Replaced legacy UI renderings with pure JSON responses (`res.json()`) to act as a standalone data provider.
+* **Complete CRUD Endpoints:** Engineered production-ready routing pipelines to fully manage posts and sub-resource comments via structured HTTP operations.
+* **HTTP Status Code Mapping:** Integrated precise semantic evaluation response states (`200 OK`, `201 Created`, `400 Bad Request`, `404 Not Found`) to standardize error and lifecycle states.
+* **Postman Integration:** Fully traced and verified all validation pipelines, payload requests, and routing parameters using Postman client testing collections.
+
+---
+
+## 📡 RESTful API Specifications & Endpoints (Version 4)
+
+### 📝 Posts API
+| HTTP Method | API Endpoint | Description | Expected Status Codes |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/api/get-posts` | Fetches all timeline posts in a reverse chronological sequence. | `200 OK`, `500 Error` |
+| **POST** | `/api/create-post` | Submits a single new timeline post. Enforces a 25-character minimum constraint. | `201 Created`, `400 Error` |
+| **PUT** | `/api/edit-post/:id` | Modifies the core string content of an existing post by its database ID. | `200 OK`, `400 Error`, `404 Not Found` |
+| **DELETE** | `/api/delete-post/:id` | Permanently drops a post and cascaded comments from the collections. | `200 OK`, `404 Not Found` |
+
+### 💬 Comments API
+| HTTP Method | API Endpoint | Description | Expected Status Codes |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/api/get-post-comments/:postId` | Pulls all comments associated with a specific target post ID (Oldest First). | `200 OK`, `404 Not Found` |
+| **POST** | `/api/post-post-comment/:postId` | Creates and logs a new comment sub-resource under a valid parent post ID. | `201 Created`, `400 Error`, `404 Not Found` |
+
+---
+
 ## 🛠️ Tech Stack & Dependencies
 
 * **Runtime Environment:** Node.js
 * **Backend Framework:** Express.js
 * **Database & ODM:** MongoDB Atlas & Mongoose
-* **Template Engine:** EJS (Embedded JavaScript)
-* **Development Tools:** Morgan (HTTP Request Logger), Nodemon
+* **Data Transmission:** Pure JSON Payloads (v4 Headless Engine Engine)
+* **Template Engine:** EJS (Used in Legacy v1, v2 & v3 MVC views)
+* **Testing Pipeline:** Postman API Client
+* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv
 
 ---
 
 ## 🚀 How to Run the Projects Locally
 
-To explore or run any specific module on your machine, follow these steps:
+To explore or run any specific module on your machine, always start from the root repository directory:
 
-1. **Clone the Repository:**
 ```bash
+# Clone the Repository and enter the root workspace
 git clone https://github.com/rajyabdullah-spec/node-backend-playground.git
 cd node-backend-playground
-```
 
-2. **Navigate and Run Module 1 (Basics):**
-```bash
-cd 01-express-ejs-basics
-npm install
-node app.js
-```
+# Option 1: Run Module 1 (Basics)
+cd 01-express-ejs-basics && npm install && node app.js
 
-3. **Navigate and Run Module 2 (The Timeline Assignment 1):**
-```bash
-cd ../02-the-timeline
-npm install
-nodemon app.js
-```
+# Option 2: Run Module 2 (The Timeline Assignment 1)
+cd ../02-the-timeline && npm install && nodemon app.js
 
-4. **Navigate and Run Module 3 (The Timeline V2 with DB):**
-```bash
-cd ../03-the-timeline-v2
-npm install
-nodemon app.js
-```
+# Option 3: Run Module 3 (The Timeline v2 with DB)
+cd ../03-the-timeline-v2 && npm install && nodemon app.js
+
+# Option 4: Run Module 4 (The Timeline v3 Comments & Isolation)
+cd ../04-the-timeline-v3 && npm install && nodemon app.js
+
+# Option 5: Run Module 5 (The Timeline API v4 - Current REST API Assignment)
+cd ../05-the-timeline-v4 && npm install && nodemon app.js
 
 *💡 After running any module, you can access the local server at:*
  http://localhost:3000
+
+ *Engineered by Raji Al-Abdullah - 2026*
