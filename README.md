@@ -59,6 +59,18 @@ This upgraded version implements strict REST specifications and professional bac
 | **GET** | `/api/get-post-comments/:postId` | Pulls all comments associated with a specific target post ID (Oldest First). | `200 OK`, `404 Not Found` |
 | **POST** | `/api/post-post-comment/:postId` | Creates and logs a new comment sub-resource under a valid parent post ID. | `201 Created`, `400 Error`, `404 Not Found` |
 
+### 📊 Automated API Testing Demonstration (Postman)
+
+Below are the live interactive verification tests executed locally on the server engine to validate routing consistency and precise semantic status responses:
+
+#### 1️⃣ Fetching Database Documents (`GET /api/get-posts`) -> Status: `200 OK`
+Demonstrates successful data pipeline communication and retrieval of current timeline logs in raw JSON array layout:
+![Get Posts Local verification](./assets/get-posts-200.gif)
+
+#### 2️⃣ Submitting New Content Record (`POST /api/create-post`) -> Status: `201 Created`
+Demonstrates complete payload parsing through strict Mongoose schemas, handling key authentication parameters, and returning successful document creation states:
+![Create Post Local Validation](./assets/create-post-201.gif)
+
 ---
 
 ## 🛠️ Tech Stack & Dependencies
