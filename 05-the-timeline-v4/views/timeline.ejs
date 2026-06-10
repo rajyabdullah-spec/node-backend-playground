@@ -31,7 +31,7 @@
 
         <div class="feed-title">Latest Updates</div>
 
-        <% if (posts.length > 0) { %>
+        <% if (locals.posts && posts.length > 0) { %>
             <% posts.forEach(p => { %>
                 <div class="post-card">
                     <div class="post-header">
@@ -40,7 +40,7 @@
                     <p class="post-message"><%= p.post %></p>
                     
                     <div class="post-link-container">
-                        <a href="/post/<%= p._id %>">See More </a>
+                        <a href="/post/<%= p._id %>">See More</a>
                     </div>
 
                     <div class="comments-section">
@@ -74,7 +74,7 @@
                         <% } %>
 
                         <form action="/post/<%= p._id %>/comment" method="POST" class="comment-form-container">
-                            <% if (locals.commentError && locals.errorPostId && errorPostId === p._id.toString()) { %>
+                            <% if (locals.commentError && locals.errorPostId && locals.errorPostId === p._id.toString()) { %>
                                 <div class="error-box comment-error-box">
                                     ⚠️ <%= commentError %>
                                 </div>
@@ -107,6 +107,7 @@
 
         async function deleteComment(id) {
             if (confirm('Are you sure you want to delete this comment?')) {
+                localStorage.setItem('scrollPosition', window.scrollY);
                 const response = await fetch(`/comment/${id}`, { method: 'DELETE' });
                 const data = await response.json();
                 if (data.redirect) {
@@ -114,6 +115,26 @@
                 }
             }
         }
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        });
+
+        window.onload = function() {
+            if (window.history.replaceState) {
+                const url = new URL(window.location.href);
+                url.searchParams.delete('postError');
+                url.searchParams.delete('commentError');
+                url.searchParams.delete('errorPostId');
+                window.history.replaceState(null, null, url.toString());
+            }
+
+            const savedScrollPosition = localStorage.getItem('scrollPosition');
+            if (savedScrollPosition) {
+                window.scrollTo(0, parseInt(savedScrollPosition, 10));
+                localStorage.removeItem('scrollPosition');
+            }
+        };
     </script>
 </body>
 </html>
