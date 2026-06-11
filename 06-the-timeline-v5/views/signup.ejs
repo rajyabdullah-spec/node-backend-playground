@@ -55,6 +55,7 @@
             const password = form.password.value;
 
             try {
+                // Send an asynchronous POST request to the signup endpoint
                 const res = await fetch('/signup', {
                     method: 'POST',
                     body: JSON.stringify({ username, email, password }),
@@ -64,9 +65,18 @@
                 const data = await res.json();
 
                 if (res.status === 201) {
+                    // Registration successful, redirect the authenticated user straight to the main timeline
                     window.location.assign('/');
                 } else {
-                    if (data.error) {
+                    // Registration failed
+                    if (data.errors) {
+                        if (data.errors.email) {
+                            document.getElementById('email-error').textContent = data.errors.email;
+                        }
+                        if (data.errors.password) {
+                            document.getElementById('password-error').textContent = data.errors.password;
+                        }
+                    } else if (data.error) {
                         alert(data.error);
                     }
                 }

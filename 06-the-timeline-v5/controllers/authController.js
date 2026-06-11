@@ -2,6 +2,26 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt'); // 🔒 Required for secure user password verification at login
 
+// 📑 Dedicated Error Handling Pipeline for Authentication
+const handleErrors = (err) => {
+    let errors = { email: '', password: '' };
+
+    // 🔑 1. Catch Duplicate Email Error (MongoDB Error Code: 11000)
+    if (err.code === 11000) {
+        errors.email = 'That email is already registered';
+        return errors;
+    }
+
+    // 🛡️ 2. Catch Mongoose Validation Errors (Min length, required fields, etc.)
+    if (err.message.includes('user validation failed')) {
+        Object.values(err.errors).forEach(({ properties }) => {
+            errors[properties.path] = properties.message;
+        });
+    }
+
+    return errors;
+};
+
 // 🔑 Helper function to create a signed JSON Web Token (JWT)
 const createToken = (id) => {
     const maxAge = 3 * 24 * 60 * 60; // 3 Days in seconds
@@ -28,7 +48,9 @@ exports.signup_post = async (req, res) => {
         });
     } catch (error) {
         console.error('Signup error occurred:', error);
-        res.status(400).json({ error: error.message });
+        // 🛡️ Filter the database response through the secure error handling pipeline
+        const errors = handleErrors(error);
+        res.status(400).json({ errors });
     }
 };
 
