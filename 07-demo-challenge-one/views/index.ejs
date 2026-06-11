@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The New York Times - All Articles</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>THE NEW YORK TIMES</h1>
+        <nav>
+            <a href="/">All Articles</a> | 
+            <a href="/admin/add">Add New Article</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Latest News</h2>
+        <% if (articles && articles.length > 0) { %>
+            <ul>
+                <% articles.forEach(item => { %>
+                    <li>
+                        <h3>
+                            <a href="/article/<%= item._id %>"><%= item.title %></a>
+                        </h3>
+                        <p class="meta-text">By: <%= item.author %> | Published: <%= item.createdAt.toDateString() %></p>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No articles available at the moment.</p>
+        <% } %>
+    </main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Article</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>THE NEW YORK TIMES</h1>
+        <nav>
+            <a href="/article/<%= article._id %>">&larr; Cancel and Go Back</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Edit Article Information</h2>
+
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="error-box">
+                <strong>Please fix the following errors:</strong>
+                <ul>
+                    <% errors.forEach(err => { %>
+                        <li><%= err %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/admin/edit/<%= article._id %>" method="POST">
+            <div class="form-group">
+                <label for="title">Title (Must be longer than 25 characters):</label>
+                <input type="text" id="title" name="title" class="form-control" value="<%= article.title %>">
+            </div>
+            
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" class="form-control" value="<%= article.author %>">
+            </div>
+            
+            <div class="form-group">
+                <label for="article">Article Content (Must be longer than 100 characters):</label>
+                <textarea id="article" name="article" rows="12" class="form-control"><%= article.article %></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Save Changes</button>
+        </form>
+    </main>
+</body>
+</html>
