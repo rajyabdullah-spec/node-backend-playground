@@ -8,9 +8,10 @@ The project is highly organized into isolated, scalable modules to prevent code 
 
 * **`01-express-ejs-basics/`** Contains early architectural concepts, chainable route handlers, custom middlewares (including Morgan logger), static file serving, and the implementation of EJS template layout partials.
 * **`02-the-timeline/`** *Assignment 1 Setup.* A full-stack mockup of a social network feed that utilizes a dynamic sorting algorithm to display user messages in a strict chronological order (most recent on top).
-* **`03-the-timeline-v2/`** *Assignment 2 Setup.* An evolution of the timeline project implementing a full **Model-View-Controller (MVC)** architecture integrated with a cloud database (**MongoDB Atlas**). 
+* **`03-the-timeline-v2/`** *Assignment 2 Setup.* An evolution of the timeline project implementing a full **Model-View-Controller (MVC)** architecture integrated with a cloud database (**MongoDB Atlas**).
 * **`04-the-timeline-v3/`** *Assignment 3 Setup.* An advanced iteration focusing on multi-model relationships, introducing the comments feature under individual posts alongside robust validation and dynamic rendering.
 * **`05-the-timeline-v4/`** *Assignment 4 Setup.* A complete transition into a modern headless **RESTful API Engine**. This architecture decouples the frontend entirely, exposing data endpoints designed for Postman validation and future React integration.
+* **`06-the-timeline-v5/`** *Assignment 5 Setup (Production Milestone).* Re-integrating the front-end views into a highly secure, full-stack MVC application. Engineered a strict session infrastructure backed by encrypted authentication tokens and persistent user state controls.
 
 ---
 
@@ -40,6 +41,17 @@ This upgraded version implements strict REST specifications and professional bac
 * **Complete CRUD Endpoints:** Engineered production-ready routing pipelines to fully manage posts and sub-resource comments via structured HTTP operations.
 * **HTTP Status Code Mapping:** Integrated precise semantic evaluation response states (`200 OK`, `201 Created`, `400 Bad Request`, `404 Not Found`) to standardize error and lifecycle states.
 * **Postman Integration:** Fully traced and verified all validation pipelines, payload requests, and routing parameters using Postman client testing collections.
+
+---
+
+## 🔐 Key Features in Version 5 (06-the-timeline-v5)
+
+This production-grade milestone introduces state-of-the-art security practices and full-stack session architectures:
+* **JSON Web Token (JWT) Authentication:** Secured the ecosystem using signed JWTs stored inside protected HTTP-Only cookies to handle state memory and session lifecycles.
+* **Granular Ownership & Middleware Walls:** Integrated custom interceptors (`requireAuth`, `checkUser`) to securely prevent unauthenticated operations and lock updating/deletion capabilities to the authentic document creator.
+* **Virtual Populate Optimization:** Advanced data fetching using Mongoose Virtual Populate parameters to fetch post-associated sub-resource comments dynamically without hardcoding relational models.
+* **Environment Configuration (.env):** Isolated sensitive server variables, cluster credentials, and encryption secret keys out of the code base using Dotenv structures to meet standard dev guidelines.
+* **UX Continuity Control:** Integrated browser scroll layout memory configurations to guarantee client-side position persistence across dynamic validation lifecycle updates.
 
 ---
 
@@ -80,16 +92,16 @@ Demonstrates complete payload parsing through strict Mongoose schemas, handling 
 * **Runtime Environment:** Node.js
 * **Backend Framework:** Express.js
 * **Database & ODM:** MongoDB Atlas & Mongoose
-* **Data Transmission:** Pure JSON Payloads (v4 Headless Engine Engine)
-* **Template Engine:** EJS (Used in Legacy v1, v2 & v3 MVC views)
+* **Data Transmission:** Pure JSON Payloads (v4) & Dynamic EJS Renderings (v5 Full-Stack)
+* **Authentication Infrastructure:** JSON Web Tokens (JWT) & Cookie-Parser (v5)
 * **Testing Pipeline:** Postman API Client
-* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv
+* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv, Bcrypt (Password Hashing)
 
 ---
 
 ## 🌐 Live Cloud Demonstration
-Before running the code locally, you can instantly test and view the raw data responses of the final production-ready stage:
-* 🌍 **Live REST API Endpoint:** `https://timeline-api-v4.onrender.com`
+Before running the code locally, you can instantly test and view the final production-ready stage:
+* 🌍 **Live Production Web Application (Version 5):** `https://timeline-api-v4.onrender.com`
 
 ---
 
@@ -109,8 +121,11 @@ cd 03-the-timeline-v2 && npm install && npm run dev
 # Option 4: Run Module 4 (The Timeline v3 Comments & Isolation)
 cd 04-the-timeline-v3 && npm install && npm run dev
 
-# Option 5: Run Module 5 (The Timeline API v4 - Current REST API Assignment)
+# Option 5: Run Module 5 (The Timeline API v4 Headless Engine)
 cd 05-the-timeline-v4 && npm install && npm run dev
+
+# Option 6: Run Module 6 (The Timeline v5 Full-Stack Secure JWT Milestone)
+cd 06-the-timeline-v5 && npm install && npm run dev
 
 💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
 👉 http://localhost:3000
