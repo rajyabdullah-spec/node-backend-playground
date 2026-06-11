@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Create Account</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h2>Create an Account</h2>
+        <p>Join the Timeline application to share your stories.</p>
+
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+                <div class="error-message" id="username-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter a secure password (min 6 chars)">
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <button type="submit" class="btn-auth">Sign Up</button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="/login">Log In here</a></p>
+        
+        <div style="text-align: center; margin-top: 15px; border-top: 1px dashed var(--border-color); padding-top: 15px;">
+            <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">← Cancel and go back</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signup-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            document.getElementById('username-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('password-error').textContent = '';
+
+            const username = form.username.value;
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const res = await fetch('/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({ username, email, password }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await res.json();
+
+                if (res.status === 201) {
+                    window.location.assign('/');
+                } else {
+                    if (data.error) {
+                        alert(data.error);
+                    }
+                }
+            } catch (err) {
+                console.error('Network or client-side error occurred:', err);
+            }
+        });
+    </script>
+</body>
+</html>

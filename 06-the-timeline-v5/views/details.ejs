@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details | Matrix Connect</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-navigation-wrapper">
+            <span>The Timeline</span>
+            <div class="nav-auth-links">
+                <% if (user) { %>
+                    <span class="welcome-msg">Welcome, <strong><%= user.username %></strong></span>
+                    <a href="/logout" id="logout-btn" class="nav-link-btn btn-logout-accent">Log Out</a>
+                <% } else { %>
+                    <a href="/login" class="nav-link-btn">Log In</a>
+                    <a href="/signup" class="nav-link-btn btn-signup-accent">Sign Up</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="post-link-container" style="text-align: left; margin-bottom: 20px;">
+            <a href="/">⬅️ Back to Timeline</a>
+        </div>
+
+        <% if (locals.error) { %>
+            <div class="error-box">
+                ⚠️ <%= error %>
+            </div>
+        <% } %>
+
+        <div class="post-card">
+            <div class="post-header">
+                <span class="post-author">✍️ Posted by: <strong><%= post.username || 'Anonymous' %></strong></span>
+                <span class="post-date">📅 <%= post.createdAt.toLocaleString() %></span>
+            </div>
+            
+            <p class="post-message" style="font-size: 1.1rem; margin-bottom: 25px;"><%= post.post %></p>
+
+            <% if (user && post.user_id && post.user_id.toString() === user._id.toString()) { %>
+                
+                <div class="owner-action-zone" style="border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                    <h4 class="post-title-accent" style="margin-bottom: 15px;">Modify your message</h4>
+                    
+                    <form action="/post/<%= post._id %>/edit" method="POST">
+                        <textarea name="message" rows="4" class="main-textarea" required><%= post.post %></textarea>
+                        
+                        <div style="margin-top: 10px;">
+                            <button type="submit" class="btn btn-save" style="padding: 10px 20px; font-size: 0.9rem;">Update Post</button>
+                            <button type="button" onclick="deletePost('<%= post._id %>')" class="btn btn-cancel" style="padding: 10px 20px; font-size: 0.9rem; float: right;">Delete Post</button>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </form>
+                </div>
+
+            <% } else { %>
+                <div class="locked-auth-prompt" style="border-top: 1px dashed var(--border-color); padding-top: 15px; background: transparent;">
+                    <p style="font-style: italic; margin: 0;">🔒 You are viewing this post in read-only mode.</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    const res = await fetch('/logout', { method: 'GET' });
+                    if (res.status === 200) {
+                        window.location.assign('/');
+                    }
+                } catch (err) {
+                    console.error('Logout failed:', err);
+                }
+            });
+        }
+
+        async function deletePost(id) {
+            if (confirm('Are you strictly sure you want to permanently delete this post along with all its comments?')) {
+                try {
+                    const response = await fetch(`/post/${id}`, { method: 'DELETE' });
+                    
+                    if (response.status === 200) {
+                        const data = await response.json();
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                    } else if (response.status === 403) {
+                        alert('Unauthorized: You can only delete your own posts.');
+                    } else {
+                        alert('Delete operation failed on server.');
+                    }
+                } catch (err) {
+                    console.error('Delete fetch failed:', err);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

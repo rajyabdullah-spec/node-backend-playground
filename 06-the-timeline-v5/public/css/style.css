@@ -1,0 +1,473 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-color: #58a6ff;
+    --accent-hover: #1f6feb;
+    --danger-color: #f85149;
+    --success-color: #2a9d8f;
+    --warning-color: #e9c46a;
+    --auth-bg: #21262d;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+/* 🌐 EXTENDED & FIXED HEADER NAVIGATION */
+.header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0; /* Cleared for strict alignment */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-navigation-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.nav-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-msg {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.welcome-msg strong {
+    color: var(--accent-color);
+}
+
+/* 🎫 FLEXIBLE NAVIGATION LINKS & BUTTONS */
+.nav-link-btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.nav-link-btn:hover {
+    border-color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-signup-accent {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+.btn-signup-accent:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-logout-accent {
+    background-color: transparent;
+    color: var(--danger-color);
+    border-color: rgba(248, 81, 73, 0.4);
+}
+
+.btn-logout-accent:hover {
+    background-color: rgba(248, 81, 73, 0.1);
+    border-color: var(--danger-color);
+}
+
+/* 📦 MAIN CONTAINER SETUP */
+.container {
+    max-width: 680px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.feed-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--text-secondary);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+/* 🖼️ POST CARDS & BOX INTERACTIVE COMPONENTS */
+.post-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.post-title-accent {
+    font-size: 1.1rem; 
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 8px;
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background-color: rgba(88, 166, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.post-message {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.post-link-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.post-link-container a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* 📝 FORM ARCHITECTURE INPUTS */
+.main-textarea {
+    width: 100%;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    padding: 12px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.main-textarea:focus, .comment-input:focus, .auth-container input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+}
+
+.comment-input {
+    width: 75%;
+    padding: 8px 12px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+/* 🕹️ COMPONENT CONTROL BUTTONS */
+.btn {
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    float: right;
+}
+
+.btn-comment {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-save { background-color: var(--success-color); color: white; padding: 6px 12px; font-size: 0.8rem; border-radius: 4px; }
+.btn-cancel { background-color: var(--danger-color); color: white; padding: 6px 12px; font-size: 0.8rem; border-radius: 4px; }
+
+/* 🔒 VISUAL OVERLAY BOX FOR GUEST USERS */
+.locked-auth-prompt {
+    text-align: center;
+    padding: 15px 10px;
+}
+
+.locked-auth-prompt h3 {
+    margin-top: 0;
+    font-size: 1.15rem;
+    color: var(--accent-color);
+}
+
+.locked-auth-prompt p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.prompt-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.prompt-btn-login, .prompt-btn-signup {
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+}
+
+.prompt-btn-login {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+}
+
+.prompt-btn-signup {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.prompt-btn-login:hover, .prompt-btn-signup:hover {
+    opacity: 0.85;
+}
+
+.or-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* 🛡️ AUTHENTICATION LAYOUT SYSTEMS (SIGNUP / LOGIN PAGES) */
+.auth-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.auth-container p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.btn-auth {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-auth:hover {
+    background-color: var(--accent-hover);
+}
+
+.auth-switch {
+    margin-top: 20px !important;
+    font-size: 0.85rem !important;
+}
+
+.auth-switch a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    font-size: 0.8rem;
+    color: var(--danger-color);
+    margin-top: 5px;
+    min-height: 15px;
+}
+
+/* ⚠️ ALERT & ERROR BOX COMPONENT UNITS */
+.error-box {
+    background-color: rgba(248, 81, 73, 0.1);
+    border: 1px solid var(--danger-color);
+    color: #ff7b72;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.comment-error-box {
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+}
+
+/* 💬 COMMENTS COMPONENT AREA STRUCTURE */
+.comments-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.comments-title {
+    margin: 0 0 10px 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.comment-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.comment-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.comment-text-italic {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.comment-actions {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-actions small {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+.action-edit { color: var(--warning-color); }
+.action-delete { color: var(--danger-color); }
+
+.comment-form-container {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 🎚️ UTILITY CLEANERS */
+.clear-fix {
+    clear: both;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+}

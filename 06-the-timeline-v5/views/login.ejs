@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Log In</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h2>Log In to Timeline</h2>
+        <p>Welcome back! Please enter your credentials to access your account.</p>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your registered email">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <button type="submit" class="btn-auth">Log In</button>
+        </form>
+
+        <p class="auth-switch">Don't have an account yet? <a href="/signup">Sign Up here</a></p>
+        
+        <div style="text-align: center; margin-top: 15px; border-top: 1px dashed var(--border-color); padding-top: 15px;">
+            <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;">← Cancel and go back</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('password-error').textContent = '';
+
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (res.status === 200) {
+                    window.location.assign('/');
+                } else {
+                    const errData = await res.json();
+                    if (errData.error) {
+                        alert(errData.error);
+                    }
+                }
+            } catch (err) {
+                console.error('Network or client-side error occurred:', err);
+            }
+        });
+    </script>
+</body>
+</html>
