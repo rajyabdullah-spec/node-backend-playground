@@ -12,6 +12,7 @@ The project is highly organized into isolated, scalable modules to prevent code 
 * **`04-the-timeline-v3/`** *Assignment 3 Setup.* An advanced iteration focusing on multi-model relationships, introducing the comments feature under individual posts alongside robust validation and dynamic rendering.
 * **`05-the-timeline-v4/`** *Assignment 4 Setup.* A complete transition into a modern headless **RESTful API Engine**. This architecture decouples the frontend entirely, exposing data endpoints designed for Postman validation and future React integration.
 * **`06-the-timeline-v5/`** *Assignment 5 Setup (Production Milestone).* Re-integrating the front-end views into a highly secure, full-stack MVC application. Engineered a strict session infrastructure backed by encrypted authentication tokens and persistent user state controls.
+* **`07-demo-challenge-one/`** *Demo Challenge 1.* A complete Full-Stack MVC application with strict backend validation, isolated EJS views, and MongoDB Atlas cloud integration.
 
 ---
 
@@ -55,6 +56,22 @@ This production-grade milestone introduces state-of-the-art security practices a
 
 ---
 
+## ⚡ Demo Challenge 1: NYT MVC Architecture (07-demo-challenge-one)
+
+This module encapsulates a production-ready Full-Stack application engineered with explicit backend isolation controls, server-side data sanitation pipelines, and global cloud database persistence.
+
+### 🛠️ Core Engineering Implementations:
+* **Strict Server Validation Walls:** Enforced rigorous payload inspection checking structural query constraints before collection injection.
+* **Decoupled MVC Partial Views:** Isolated independent structural interface nodes utilizing custom embedded layouts.
+* **Atlas Cluster Orchestration:** Integrated dynamic cloud connection handlers managing remote MongoDB endpoints.
+
+### 🎬 Live Execution Verification Log
+Click the preview badge below to open the dynamic asynchronous media lightbox and review the successful structural compilation, routing navigation, and database transaction lifecycles verified locally:
+
+[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-gold?style=for-the-badge&logo=cinema)](./07-demo-challenge-one/assets/project-demo.gif)
+
+---
+
 ## 📡 RESTful API Specifications & Endpoints (Version 4)
 
 ### 📝 Posts API
@@ -76,14 +93,10 @@ This production-grade milestone introduces state-of-the-art security practices a
 Below are the live interactive verification tests executed locally on the server engine to validate routing consistency and precise semantic status responses. Click on the preview buttons below to watch the operational logs:
 
 #### 1️⃣ Fetching Database Documents (`GET /api/get-posts`) -> Status: `200 OK`
-Demonstrates successful data pipeline communication and retrieval of current timeline logs in raw JSON array layout:
-
-👉 [📸 Click Here to View Live GET Response Log](https://github.com/rajyabdullah-spec/node-backend-playground/blob/main/05-the-timeline-v4/assets/get-posts-200.gif)
+👉 [📸 Click Here to View Live GET Response Log](./05-the-timeline-v4/assets/get-posts-200.gif)
 
 #### 2️⃣ Submitting New Content Record (`POST /api/create-post`) -> Status: `201 Created`
-Demonstrates complete payload parsing through strict Mongoose schemas, handling key authentication parameters, and returning successful document creation states:
-
-👉 [🚀 Click Here to View Live POST Validation Log](https://github.com/rajyabdullah-spec/node-backend-playground/blob/main/05-the-timeline-v4/assets/create-post-201.gif)
+👉 [🚀 Click Here to View Live POST Validation Log](./05-the-timeline-v4/assets/create-post-201.gif)
 
 ---
 
@@ -126,6 +139,9 @@ cd 05-the-timeline-v4 && npm install && npm run dev
 
 # Option 6: Run Module 6 (The Timeline v5 Full-Stack Secure JWT Milestone)
 cd 06-the-timeline-v5 && npm install && npm run dev
+
+# Option 7: Run Module 7 (Demo Challenge 1: NYT MVC Architecture)
+cd 07-demo-challenge-one && npm install && npm run dev
 
 💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
 👉 http://localhost:3000
