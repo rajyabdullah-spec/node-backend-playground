@@ -14,6 +14,7 @@ The project is highly organized into isolated, scalable modules to prevent code 
 * **`06-the-timeline-v5/`** *Assignment 5 Setup (Production Milestone).* Re-integrating the front-end views into a highly secure, full-stack MVC application. Engineered a strict session infrastructure backed by encrypted authentication tokens and persistent user state controls.
 * **`07-demo-challenge-one/`** *Demo Challenge 1.* A complete Full-Stack MVC application with strict backend validation, isolated EJS views, and MongoDB Atlas cloud integration.
 * **`08-demo-challenge-two/`** *Demo Challenge 2.* A secure, highly-tuned Welcome App engineered using full-stack Node.js MVC architecture, custom routing pipelines, encrypted database storage, and fluid UI interfaces.
+* **`09-The-Challenge-The-Facebook/`** *The Facebook Challenge.* A production-grade server-side micro-platform strictly enforcing MVC architecture, standalone custom routing paths, automated client deletion checks, and strict database field length restrictions.
 
 ---
 
@@ -91,6 +92,23 @@ Click the preview badge below to open the dynamic asynchronous media lightbox an
 
 ---
 
+## 🏆 Final Section Challenge: The Facebook MVC (09-The-Challenge-The-Facebook)
+
+This production-grade module wraps the definitive backend challenge for the MVC full-stack segment, enforcing strict architecture guidelines and user flow criteria.
+
+### 🛠️ Core Engineering Implementations:
+* **Strict Server Validation Walls:** Enforces rigid input rules on data storage (Name $\le$ 15 characters, Message $\le$ 40 characters) and prevents blank entries.
+* **Precise Route Layout Matching:** Tailored custom HTTP endpoints (`/feed`, `/feed/:id`, `/feed/edit/:id`) to mirror requested specification wireframes exactly.
+* **Asynchronous UX Protection Layers:** Built client-side native confirm prompts on delete requests to prevent unintentional collection wipes.
+* **Isolated Resource Directory**: Extracted styling configurations into standalone CSS structures and isolated remote database connections into an independent configurations helper.
+
+### 🎬 Live Execution Verification Log
+Click the preview badge below to review the successful layout rendering, validation boundary triggers, real-time database inputs, and interactive CRUD operations recorded locally:
+
+[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-purple?style=for-the-badge&logo=cinema)](./09-The-Challenge-The-Facebook/assets/The-Challenge.gif)
+
+---
+
 ## 📡 RESTful API Specifications & Endpoints (Version 4)
 
 ### 📝 Posts API
@@ -127,7 +145,7 @@ Below are the live interactive verification tests executed locally on the server
 * **Data Transmission:** Pure JSON Payloads (v4) & Dynamic EJS Renderings (v5 & Challenges Full-Stack)
 * **Authentication Infrastructure:** JSON Web Tokens (JWT), Cookie-Parser & Bcrypt Hashing
 * **Testing Pipeline:** Postman API Client
-* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv
+* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv, Method-Override
 
 ---
 
@@ -165,7 +183,10 @@ cd 07-demo-challenge-one && npm install && npm run dev
 # Option 8: Run Module 8 (Demo Challenge 2: Welcome App MVC)
 cd 08-demo-challenge-two && npm install && npm run dev
 
+# Option 9: Run Module 9 (The Facebook MVC Challenge)
+cd 09-The-Challenge-The-Facebook && npm install && npm run dev
+
 💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
 👉 http://localhost:3000
 
- *Engineered by Raji Al-Abdullah - 2026*
+*Engineered by Raji Al-Abdullah - 2026*

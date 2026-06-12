@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Listing</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>The Facebook - Edit</h1>
+    </div>
+
+    <div class="container">
+        <div class="form-box">
+            <% if (errors && errors.length > 0) { %>
+                <div class="error-box">
+                    <ul>
+                        <% errors.forEach(err => { %>
+                            <li><%= err %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <form action="/feed/update/<%= feed._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" value="<%= feed.name %>" required>
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <input type="text" name="message" value="<%= feed.message %>" required>
+                </div>
+                <button type="submit" class="btn">Update Listing</button>
+                <div class="feed-actions" style="margin-top: 15px; border-top: none; justify-content: center;">
+                    <a href="/feed">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

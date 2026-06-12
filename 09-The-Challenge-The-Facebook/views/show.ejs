@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Listing</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>The Facebook - Listing Details</h1>
+    </div>
+
+    <div class="container">
+        <div class="feed-box">
+            <div class="feed-header">
+                <%= feed.name %>
+                <span class="feed-time">
+                    <%= feed.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %> at <%= feed.createdAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) %>
+                </span>
+            </div>
+            <div class="feed-message"><%= feed.message %></div>
+            <div class="feed-actions">
+                <a href="/feed/edit/<%= feed._id %>">Edit</a>
+                
+                <form action="/feed/delete/<%= feed._id %>?_method=DELETE" method="POST" class="action-form" onsubmit="return confirm('Are you sure you want to delete this listing?');">
+                    <button type="submit" class="btn-delete">Delete</button>
+                </form>
+
+                <a href="/feed" style="margin-left: auto; color: #606770;">Back to Feed</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

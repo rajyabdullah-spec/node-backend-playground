@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Facebook</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>The Facebook</h1>
+    </div>
+
+    <div class="container">
+        <div class="form-box">
+            <% if (errors && errors.length > 0) { %>
+                <div class="error-box">
+                    <ul>
+                        <% errors.forEach(err => { %>
+                            <li><%= err %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <form action="/feed/add" method="POST">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <input type="text" name="message" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <% feeds.forEach(feed => { %>
+            <div class="feed-box">
+                <div class="feed-header">
+                    <%= feed.name %>
+                    <span class="feed-time"><%= feed.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %> at <%= feed.createdAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) %></span>
+
+                </div>
+                <div class="feed-message"><%= feed.message %></div>
+                <div class="feed-actions">
+                    <a href="/feed/<%= feed._id %>">See more</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
