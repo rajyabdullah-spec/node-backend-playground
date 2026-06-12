@@ -13,6 +13,7 @@ The project is highly organized into isolated, scalable modules to prevent code 
 * **`05-the-timeline-v4/`** *Assignment 4 Setup.* A complete transition into a modern headless **RESTful API Engine**. This architecture decouples the frontend entirely, exposing data endpoints designed for Postman validation and future React integration.
 * **`06-the-timeline-v5/`** *Assignment 5 Setup (Production Milestone).* Re-integrating the front-end views into a highly secure, full-stack MVC application. Engineered a strict session infrastructure backed by encrypted authentication tokens and persistent user state controls.
 * **`07-demo-challenge-one/`** *Demo Challenge 1.* A complete Full-Stack MVC application with strict backend validation, isolated EJS views, and MongoDB Atlas cloud integration.
+* **`08-demo-challenge-two/`** *Demo Challenge 2.* A secure, highly-tuned Welcome App engineered using full-stack Node.js MVC architecture, custom routing pipelines, encrypted database storage, and fluid UI interfaces.
 
 ---
 
@@ -72,6 +73,24 @@ Click the preview badge below to open the dynamic asynchronous media lightbox an
 
 ---
 
+## ⚡ Demo Challenge 2: Welcome App MVC (08-demo-challenge-two)
+
+This module encapsulates a production-ready Full-Stack Welcome Application built entirely from scratch. It follows a strict **Model-View-Controller (MVC)** design pattern, integrating robust server-side input validation and dynamic session memory control.
+
+### 🛠️ Core Engineering Implementations:
+* **Strict Server Validation Walls:** Enforced rigorous payload inspection checking data constraints before database injection (First Name $\le$ 10 chars, Last Name $\le$ 15 chars, and non-empty parameters).
+* **Decoupled MVC Architecture:** Complete structural separation separating concerns across dedicated `models/`, `views/`, `controllers/`, and `routes/` modules.
+* **Encrypted Authentication Pipeline:** Integrated server-side `bcrypt` automatic pre-save hooks to hash and salt user credentials instantly inside the local collection.
+* **Cookie-Backed Session Persistence:** Configured dynamic `cookie-parser` session infrastructure using protected HTTP-Only client storage to handle user state redirects and view permissions securely.
+* **Sleek UX/UI Modernization:** Modernized the application wireframe layout into an elegant, side-by-side balanced grid utilizing a highly fluid Minimalist Glassmorphism theme to guarantee seamless navigation.
+
+### 🎬 Live Execution Verification Log
+Click the preview badge below to open the dynamic asynchronous media lightbox and review the successful layout compilation, precise back-end validation errors, database authentication, and session memory lifecycles verified locally:
+
+[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-blue?style=for-the-badge&logo=cinema)](./08-demo-challenge-two/assets/Demo2.gif)
+
+---
+
 ## 📡 RESTful API Specifications & Endpoints (Version 4)
 
 ### 📝 Posts API
@@ -104,11 +123,11 @@ Below are the live interactive verification tests executed locally on the server
 
 * **Runtime Environment:** Node.js
 * **Backend Framework:** Express.js
-* **Database & ODM:** MongoDB Atlas & Mongoose
-* **Data Transmission:** Pure JSON Payloads (v4) & Dynamic EJS Renderings (v5 Full-Stack)
-* **Authentication Infrastructure:** JSON Web Tokens (JWT) & Cookie-Parser (v5)
+* **Database & ODM:** MongoDB & Mongoose
+* **Data Transmission:** Pure JSON Payloads (v4) & Dynamic EJS Renderings (v5 & Challenges Full-Stack)
+* **Authentication Infrastructure:** JSON Web Tokens (JWT), Cookie-Parser & Bcrypt Hashing
 * **Testing Pipeline:** Postman API Client
-* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv, Bcrypt (Password Hashing)
+* **Development Tools:** Morgan (HTTP Request Logger), Nodemon, Dotenv
 
 ---
 
@@ -142,6 +161,9 @@ cd 06-the-timeline-v5 && npm install && npm run dev
 
 # Option 7: Run Module 7 (Demo Challenge 1: NYT MVC Architecture)
 cd 07-demo-challenge-one && npm install && npm run dev
+
+# Option 8: Run Module 8 (Demo Challenge 2: Welcome App MVC)
+cd 08-demo-challenge-two && npm install && npm run dev
 
 💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
 👉 http://localhost:3000
