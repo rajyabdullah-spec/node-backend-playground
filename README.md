@@ -1,6 +1,35 @@
 # Node.js & ExpressJS Backend Playground
 
+📎 **Architectural Ecosystem Status:**
+![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Framework-Express.js-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
+![Postman](https://img.shields.io/badge/Testing-Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
+
 Welcome to my personal backend development repository. This repository documents my journey in mastering server-side architecture, RESTful routing, MVC design patterns, and database integrations using Express.js and MongoDB.
+
+---
+
+## 🏛️ MVC Core Data Architecture Flow
+
+To maintain high security, data isolation, and smooth state transitions across all full-stack endpoints, the routing execution sequence inside this playground adheres strictly to the following structural MVC flow chart:
+
+```text
+       [ Client Browser / Postman Operations ]
+                         │
+              (HTTP Request: GET / POST)
+                         ▼
+               [ Express Router Tree ] ──(Middleware: Auth/.env Verification)──► [ Access Denied (400/401) ]
+                         │
+                  (Valid Route Path)
+                         ▼
+               [ Controller Business Logic ]
+                    │              ▲
+         (Mongoose DB Write)   (Data Document Returns)
+                    ▼              │
+           [ Mongoose Models ] ◄──► [ MongoDB Atlas Cloud Cluster ]
+```           
 
 ## 📂 Repository Structure
 
@@ -68,9 +97,11 @@ This module encapsulates a production-ready Full-Stack application engineered wi
 * **Atlas Cluster Orchestration:** Integrated dynamic cloud connection handlers managing remote MongoDB endpoints.
 
 ### 🎬 Live Execution Verification Log
-Click the preview badge below to open the dynamic asynchronous media lightbox and review the successful structural compilation, routing navigation, and database transaction lifecycles verified locally:
-
-[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-gold?style=for-the-badge&logo=cinema)](./07-demo-challenge-one/assets/project-demo.gif)
+<details>
+<summary>🎬 <b>Click to view NYT MVC Application Cycle</b></summary>
+<br>
+<img src="./07-demo-challenge-one/assets/project-demo.gif" class="img-fluid rounded shadow" alt="NYT MVC Application Cycle" style="max-width: 100%; border: 1px solid #333;">
+</details>
 
 ---
 
@@ -86,9 +117,11 @@ This module encapsulates a production-ready Full-Stack Welcome Application built
 * **Sleek UX/UI Modernization:** Modernized the application wireframe layout into an elegant, side-by-side balanced grid utilizing a highly fluid Minimalist Glassmorphism theme to guarantee seamless navigation.
 
 ### 🎬 Live Execution Verification Log
-Click the preview badge below to open the dynamic asynchronous media lightbox and review the successful layout compilation, precise back-end validation errors, database authentication, and session memory lifecycles verified locally:
-
-[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-blue?style=for-the-badge&logo=cinema)](./08-demo-challenge-two/assets/Demo2.gif)
+<details>
+<summary>🎬 <b>Click to view Welcome App MVC Application Cycle</b></summary>
+<br>
+<img src="./08-demo-challenge-two/assets/Demo2.gif" class="img-fluid rounded shadow" alt="Welcome App MVC Application Cycle" style="max-width: 100%; border: 1px solid #333;">
+</details>
 
 ---
 
@@ -103,9 +136,11 @@ This production-grade module wraps the definitive backend challenge for the MVC 
 * **Isolated Resource Directory**: Extracted styling configurations into standalone CSS structures and isolated remote database connections into an independent configurations helper.
 
 ### 🎬 Live Execution Verification Log
-Click the preview badge below to review the successful layout rendering, validation boundary triggers, real-time database inputs, and interactive CRUD operations recorded locally:
-
-[![🎬 View Project Execution Preview](https://img.shields.io/badge/Preview-Project%20Execution%20GIF-purple?style=for-the-badge&logo=cinema)](./09-The-Challenge-The-Facebook/assets/The-Challenge.gif)
+<details>
+<summary>🎬 <b>Click to view The Facebook MVC Full Execution Cycle</b></summary>
+<br>
+<img src="./09-The-Challenge-The-Facebook/assets/The-Challenge.gif" class="img-fluid rounded shadow" alt="The Facebook MVC Full Execution Cycle" style="max-width: 100%; border: 1px solid #333;">
+</details>
 
 ---
 
@@ -127,13 +162,18 @@ Click the preview badge below to review the successful layout rendering, validat
 
 ### 📊 Automated API Testing Demonstration (Postman)
 
-Below are the live interactive verification tests executed locally on the server engine to validate routing consistency and precise semantic status responses. Click on the preview buttons below to watch the operational logs:
+Below are the live interactive verification tests executed locally on the server engine to validate routing consistency and precise semantic status responses.
+
+<details>
+<summary>📸 <b>Click to view Live Postman Verification Logs (GET & POST)</b></summary>
+<br>
 
 #### 1️⃣ Fetching Database Documents (`GET /api/get-posts`) -> Status: `200 OK`
-👉 [📸 Click Here to View Live GET Response Log](./05-the-timeline-v4/assets/get-posts-200.gif)
+<img src="./05-the-timeline-v4/assets/get-posts-200.gif" class="img-fluid rounded shadow mb-4" alt="GET Response Log" style="max-width: 100%; border: 1px solid #333;">
 
 #### 2️⃣ Submitting New Content Record (`POST /api/create-post`) -> Status: `201 Created`
-👉 [🚀 Click Here to View Live POST Validation Log](./05-the-timeline-v4/assets/create-post-201.gif)
+<img src="./05-the-timeline-v4/assets/create-post-201.gif" class="img-fluid rounded shadow" alt="POST Validation Log" style="max-width: 100%; border: 1px solid #333;">
+</details>
 
 ---
 
@@ -150,8 +190,9 @@ Below are the live interactive verification tests executed locally on the server
 ---
 
 ## 🌐 Live Cloud Demonstration
+
 Before running the code locally, you can instantly test and view the final production-ready stage:
-* 🌍 **Live Production Web Application (Version 5):** `https://timeline-api-v4.onrender.com`
+* 🌍 **Live Production Web Application (Version 5):** [Launch Live Timeline App 🚀](https://timeline-api-v4.onrender.com)
 
 ---
 
@@ -188,5 +229,6 @@ cd 09-The-Challenge-The-Facebook && npm install && npm run dev
 
 💡 Note: After running any module, remember to return to the root directory (cd ..) if you want to switch modules. Access your local environment at:
 👉 http://localhost:3000
+```
 
 *Engineered by Raji Al-Abdullah - 2026*
